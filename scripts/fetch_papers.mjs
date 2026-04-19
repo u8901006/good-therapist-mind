@@ -79,80 +79,89 @@ async function pubmedSearch(query, retmax = 20) {
 async function pubmedFetch(pmids) {
   if (!pmids.length) return [];
   const url = `${PUBMED_FETCH}?db=pubmed&id=${pmids.join(",")}&retmode=xml`;
-  const resp = await fetch(url, {
-    headers: { "User-Agent": "GoodTherapistMind/1.0" },
-    signal: AbortSignal.timeout(60000),
-  });
-  if (!resp.ok) throw new Error(`PubMed fetch HTTP ${resp.status}`);
-  const xml = await resp.text();
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const resp = await fetch(url, {
+        headers: { "User-Agent": "GoodTherapistMind/1.0" },
+        signal: AbortSignal.timeout(60000),
+      });
+      if (resp.status === 429) {
+        const wait = 10 * (attempt + 1);
+        console.error(`[WARN] Fetch rate limited, waiting ${wait}s...`);
+        await new Promise((r) => setTimeout(r, wait * 1000));
+        continue;
+      }
+      if (!resp.ok) throw new Error(`PubMed fetch HTTP ${resp.status}`);
+      const xml = await resp.text();
 
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    isArray: (name) => ["PubmedArticle", "AbstractText", "Keyword"].includes(name),
-  });
-  const root = parser.parse(xml);
+      const parser = new XMLParser({
+        ignoreAttributes: false,
+        isArray: (name) => ["PubmedArticle", "AbstractText", "Keyword"].includes(name),
+      });
+      const root = parser.parse(xml);
+      const articles = root?.PubmedArticleData?.PubmedArticle || [];
+      const papers = [];
 
-  const articles = root?.PubmedArticleData?.PubmedArticle || [];
-  const papers = [];
+      for (const article of articles) {
+        const medline = article.MedlineCitation;
+        if (!medline) continue;
+        const art = medline.Article;
+        if (!art) continue;
 
-  for (const article of articles) {
-    const medline = article.MedlineCitation;
-    if (!medline) continue;
-    const art = medline.Article;
-    if (!art) continue;
+        const title = art.ArticleTitle || "";
+        const journal = art.Journal?.Title || "";
 
-    const title = art.ArticleTitle || "";
-    const journal = art.Journal?.Title || "";
+        let abstract = "";
+        const absTexts = art.Abstract?.AbstractText;
+        if (Array.isArray(absTexts)) {
+          abstract = absTexts
+            .map((a) => {
+              const label = a["@_Label"];
+              const text = typeof a === "string" ? a : a["#text"] || "";
+              return label ? `${label}: ${text}` : text;
+            })
+            .join(" ")
+            .slice(0, 2000);
+        }
 
-    let abstract = "";
-    const absTexts = art.Abstract?.AbstractText;
-    if (Array.isArray(absTexts)) {
-      abstract = absTexts
-        .map((a) => {
-          const label = a["@_Label"];
-          const text = typeof a === "string" ? a : a["#text"] || "";
-          return label ? `${label}: ${text}` : text;
-        })
-        .join(" ")
-        .slice(0, 2000);
-    }
-
-    const pmid = String(medline.PMID?.["#text"] || medline.PMID || "");
-    const keywords = [];
-    const kwList = medline.KeywordList;
-    if (kwList) {
-      const kws = Array.isArray(kwList) ? kwList : [kwList];
-      for (const kl of kws) {
-        const items = kl.Keyword;
-        if (Array.isArray(items)) {
-          for (const kw of items) {
-            const t = typeof kw === "string" ? kw : kw["#text"];
-            if (t) keywords.push(t.trim());
+        const pmid = String(medline.PMID?.["#text"] || medline.PMID || "");
+        const keywords = [];
+        const kwList = medline.KeywordList;
+        if (kwList) {
+          const kws = Array.isArray(kwList) ? kwList : [kwList];
+          for (const kl of kws) {
+            const items = kl.Keyword;
+            if (Array.isArray(items)) {
+              for (const kw of items) {
+                const t = typeof kw === "string" ? kw : kw["#text"];
+                if (t) keywords.push(t.trim());
+              }
+            }
           }
         }
+
+        const pubDate = art.Journal?.JournalIssue?.PubDate;
+        const dateParts = [pubDate?.Year, pubDate?.Month, pubDate?.Day].filter(Boolean);
+        const dateStr = dateParts.join(" ");
+
+        papers.push({
+          pmid,
+          title: title.slice(0, 500),
+          journal,
+          date: dateStr,
+          abstract,
+          url: pmid ? `https://pubmed.ncbi.nlm.nih.gov/${pmid}/` : "",
+          keywords,
+        });
       }
+
+      return papers;
+    } catch (e) {
+      console.error(`[WARN] Fetch attempt ${attempt + 1} failed: ${e.message}`);
+      if (attempt < 2) await new Promise((r) => setTimeout(r, 5000));
     }
-
-    const pubDate = art.Journal?.JournalIssue?.PubDate;
-    const dateParts = [
-      pubDate?.Year,
-      pubDate?.Month,
-      pubDate?.Day,
-    ].filter(Boolean);
-    const dateStr = dateParts.join(" ");
-
-    papers.push({
-      pmid,
-      title: title.slice(0, 500),
-      journal,
-      date: dateStr,
-      abstract,
-      url: pmid ? `https://pubmed.ncbi.nlm.nih.gov/${pmid}/` : "",
-      keywords,
-    });
   }
-
-  return papers;
+  return [];
 }
 
 async function loadExistingPmids(docsDir) {
