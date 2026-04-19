@@ -1,0 +1,12 @@
+{
+  "name": "good-therapist-mind",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node fetch_papers.mjs",
+    "report": "node generate_report.mjs",
+    "index": "node generate_index.mjs",
+    "build": "node fetch_papers.mjs && node generate_report.mjs && node generate_index.mjs"
+  }
+}
