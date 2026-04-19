@@ -79,8 +79,10 @@ jobs:
 
       - name: Commit and push
         run: |
+          git stash --include-untracked || true
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git stash pop || true
           git add docs/
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "📝 therapy daily report: ${{ steps.date.outputs.target }}"

@@ -183,12 +183,15 @@ async function main() {
   console.error(`[INFO] Built ${queries.length} queries, looking back ${days} days`);
 
   const allPmids = new Set();
-  for (const query of queries) {
+  for (let i = 0; i < queries.length; i++) {
     try {
-      const ids = await pubmedSearch(query, 15);
+      const ids = await pubmedSearch(queries[i], 15);
       for (const id of ids) allPmids.add(id);
     } catch (e) {
-      console.error(`[WARN] Query failed: ${e.message}`);
+      console.error(`[WARN] Query ${i + 1}/${queries.length} failed: ${e.message}`);
+    }
+    if (i < queries.length - 1) {
+      await new Promise((r) => setTimeout(r, 1500));
     }
   }
 
