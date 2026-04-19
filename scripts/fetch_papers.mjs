@@ -99,7 +99,7 @@ async function pubmedFetch(pmids) {
         isArray: (name) => ["PubmedArticle", "AbstractText", "Keyword"].includes(name),
       });
       const root = parser.parse(xml);
-      const articles = root?.PubmedArticleData?.PubmedArticle || [];
+      const articles = root?.PubmedArticleSet?.PubmedArticle || [];
       const papers = [];
 
       for (const article of articles) {
