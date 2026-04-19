@@ -48,6 +48,7 @@ jobs:
           cd scripts
           node fetch_papers.mjs --days=7 --max-papers=40 --output=../papers.json --docs=../docs
         continue-on-error: true
+        timeout-minutes: 10
 
       - name: Check papers data
         id: papers

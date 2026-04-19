@@ -86,7 +86,7 @@ async function pubmedFetch(pmids) {
         signal: AbortSignal.timeout(60000),
       });
       if (resp.status === 429) {
-        const wait = 10 * (attempt + 1);
+        const wait = 30 * (attempt + 1);
         console.error(`[WARN] Fetch rate limited, waiting ${wait}s...`);
         await new Promise((r) => setTimeout(r, wait * 1000));
         continue;
@@ -200,7 +200,7 @@ async function main() {
       console.error(`[WARN] Query ${i + 1}/${queries.length} failed: ${e.message}`);
     }
     if (i < queries.length - 1) {
-      await new Promise((r) => setTimeout(r, 1500));
+      await new Promise((r) => setTimeout(r, 3000));
     }
   }
 
@@ -222,10 +222,11 @@ async function main() {
     return;
   }
 
-  const batchSize = 50;
+  const batchSize = 20;
   let allPapers = [];
   for (let i = 0; i < newPmids.length; i += batchSize) {
     const batch = newPmids.slice(i, i + batchSize);
+    if (i > 0) await new Promise((r) => setTimeout(r, 5000));
     try {
       const papers = await pubmedFetch(batch);
       allPapers.push(...papers);
