@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年5月16日</title>
+<meta name="description" content="2026年5月16日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年5月16日（週六）</span>
+        <span class="badge badge-count">📊 17 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻以 World Psychiatry 大規模研究為主軸，焦慮症死亡率與自殺風險的巨型 meta-analysis 最具臨床震撼力；家族治療過程研究與跨文化伴侶介入提供具體實務指引。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">⚠️</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>焦慮與壓力相關疾患患者的全因死亡率、特定原因死亡率及自殺企圖風險：165項研究的系統性文獻回顧、Meta分析與Meta迴歸分析</h3>
+      <p class="journal-source">World Psychiatry &middot; Risk of all-cause and cause-specific mortality, and suicide attempt in people with anxiety and stress-related disorders: a systematic review, meta-analysis and meta-regression analysis of 165 studies.</p>
+      <p>焦慮與壓力相關疾患患者全因死亡率增加54%，自殺死亡率增加近3倍，恐慌症自殺企圖風險更高達6.33倍，臨床評估應將此風險納入常規考量。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">焦慮或壓力相關疾患患者（7,395,722人）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（觀察性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">一般人口對照組（135,059,023人）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">全因死亡率RR=1.54；自殺死亡率RR=2.88；自殺企圖風險RR=2.74-6.33</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span><span class="tag">創傷治療</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136520/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">📋</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>精神分裂症患者的真實世界全面照護：跨不同場域與臨床階段的建議</h3>
+      <p class="journal-source">World Psychiatry &middot; Real-world comprehensive care of people living with schizophrenia: recommendations across different settings and clinical stages.</p>
+      <p>首份涵蓋高、中、低資源場域的精神分裂症全面照護建議，強調早期介入、文化敏感度與任務分享模式的重要性。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">精神分裂症譜系精神病患</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">全面性整合照護模式（含藥物、心理、社會、身體、社區、同儕支持等）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組（共識建議）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">跨資源層級的實務照護指引</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">證據實務</span><span class="tag">心理治療歷程</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136416/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">👨‍👩‍👧</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>依附基礎家族治療中關係重塑的解剖學</h3>
+      <p class="journal-source">Family Process &middot; Anatomy of the Relational Reframe in Attachment-Based Family Therapy.</p>
+      <p>青少年與父母討論關係破裂與柔軟情緒的程度，可預測父母接受關係修復契約的可能性；逃避型依附青少年較不易接受此契約。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">接受ABFT治療的憂鬱與自殺青少年及其家庭（47個家庭）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">依附基礎家族治療中的關係重塑技術</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組（過程研究）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">關係重塑主題的參與度與契約接受度的關聯</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">家族治療</span><span class="tag">依附</span><span class="tag">心理治療歷程</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42134862/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#4</span>
+        <span class="emoji-icon">💑</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>「Juntos en Pareja」對西語裔拉丁伴侶的個人、關係與財務效益評估</h3>
+      <p class="journal-source">Family Process &middot; Evaluation of the Individual, Relationship, and Financial Benefits of Juntos en Pareja for Spanish-Speaking Latine Couples.</p>
+      <p>文化與語言適配的關係與財務教育方案能有效降低西語裔伴侶的心理困擾、負向衝突與心理攻擊，並減少帳單支付困難。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">美國西語裔拉丁伴侶（284對）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Juntos en Pareja（文化適配版關係與財務教育方案）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">非拉丁伴侶接受原版TOGETHER方案（266對）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">心理困擾、負向衝突管理、心理攻擊顯著下降；與伴侶相處時間增加；帳單支付困難減少</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">伴侶治療</span><span class="tag">文化能力</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42134907/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#5</span>
+        <span class="emoji-icon">👶</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>兒童與青少年精神醫學：挑戰、解決方案、機會與未來方向</h3>
+      <p class="journal-source">World Psychiatry &middot; Child and adolescent psychiatry: challenges, solutions, opportunities, and future directions.</p>
+      <p>全面回顧兒少精神醫學領域的核心挑戰（診斷、汙名化、資源短缺、數位影響）與發展機會（早期識別、精準醫學、AI應用、文化多元）。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">兒童與青少年精神醫學領域</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（領域回顧）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">挑戰與解決方案的系統性梳理</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">兒少心理</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136439/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#6</span>
+        <span class="emoji-icon">🏘️</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>社會凝聚力、社會資本與心理健康：當前證據與未來研究方向</h3>
+      <p class="journal-source">World Psychiatry &middot; Social cohesion, social capital and mental health: current evidence and future research directions.</p>
+      <p>社會凝聚力對常見精神疾病、自殺意念與物質濫用具一致性的保護作用，應視為心理健康促進的上游資產導向策略。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">社區、學校與職場人口</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">社會凝聚力促進（觀察性證據）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">低社會凝聚力環境</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">常見精神疾病、自殺意念、物質濫用風險降低</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136411/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#7</span>
+        <span class="emoji-icon">🧪</span>
+        <span class="utility-low">低實用性</span>
+      </div>
+      <h3>鼻腔給予催產素能否減輕精神疾病症狀？臨床試驗的Meta分析</h3>
+      <p class="journal-source">Neuroscience and Biobehavioral Reviews &middot; Does Intranasal Oxytocin Reduce Symptoms of Mental Disorders? A Meta-Analysis of Clinical Trials.</p>
+      <p>整體效果不顯著，但精神分裂症譜系有小但顯著的效果；女性比例較高的研究效果較大，未來試驗應系統探討劑量反應關係。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">自閉症譜系、精神分裂症譜系、物質使用疾患等患者（1,922人）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">鼻腔催產素</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">整體效果量g=0.17（不顯著）；精神分裂症亞組g=0.12（顯著）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42134427/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🔄</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>如何在精神分裂症照護中實現真實世界的改變？</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>探討精神分裂症照護改革的實施挑戰與策略。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136513/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">📊</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>Cochrane系統性回顧中常見精神疾病介入措施的證據品質與效能分析</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>分析Cochrane回顧中常見精神疾病介入措施的證據品質。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136507/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🌍</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>邁向更具包容性的精神醫學：第25屆世界精神醫學大會發表者與參與者的多樣性</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>檢視世界精神醫學大會的參與多元性。</p>
+      <div class="card-footer">
+        <span class="tag">文化能力</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136438/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🇩🇪</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>德國新版證據與共識基礎精神分裂症臨床指引</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>介紹德國更新版精神分裂症臨床指引。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136437/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">📱</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>MIND資料庫中心理健康App的品質與存續期之縱向分析</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>追蹤心理健康App的品質變化與市場存活狀況。</p>
+      <div class="card-footer">
+        <span class="tag">脱落與留存</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136432/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">😣</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>慢性疼痛與精神疾病：需要全新綜合處理模式的常見共病</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>探討慢性疼痛與精神疾病共病的新型處理模式。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136427/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🔍</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>臨床高風險狀態的識別問題正阻礙精神分裂症的預防</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>討論臨床高風險狀態識別困難對精神分裂症預防的影響。</p>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136419/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🎓</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>透過協作教育強化全球心理健康人力</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>探討如何透過協作教育模式培養心理健康人力。</p>
+      <div class="card-footer">
+        <span class="tag">治療師發展</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136413/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">💻</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>重新思考數位心理健康中脱落的預測與預防</h3>
+      <p class="journal-source">World Psychiatry</p>
+      <p>探討數位心理健康介入中脱落的預測因子與預防策略。</p>
+      <div class="card-footer">
+        <span class="tag">脱落與留存</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42136409/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🐹</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>血清素在早期社會發展中的基本角色：透過超音波叫聲、母親依附與雙向互動進行的社會情感溝通</h3>
+      <p class="journal-source">Neuroscience and Biobehavioral Reviews</p>
+      <p>動物研究綜述顯示中樞血清素是早期社會情感溝通的關鍵調節因子。</p>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">依附</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42134428/" target="_blank">PubMed →</a>
+      </div>
+    </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">7</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">衡鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:43%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">家族治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">依附</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">文化能力</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">脱落與留存</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">兒少心理</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">神經科學</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:29%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">伴侶治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">心理治療歷程</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">治療師發展</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">創傷治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:14%"></div></div>
+        <span class="topic-count">1</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">焦慮症死亡率</span><span class="keyword">自殺風險評估</span><span class="keyword">精神分裂症全面照護</span><span class="keyword">家族治療過程</span><span class="keyword">關係重塑</span><span class="keyword">文化適配</span><span class="keyword">兒少精神醫學</span><span class="keyword">社會凝聚力</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：GLM-5-Turbo</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
