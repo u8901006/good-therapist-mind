@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年6月4日</title>
+<meta name="description" content="2026年6月4日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年6月4日（週四）</span>
+        <span class="badge badge-count">📊 10 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻強調「微觀技巧」與「宏觀系統」的並重：不僅有實證支持治療師非語言行為對聯盟的關鍵影響，也涵蓋物質使用治療目標的務實調整、母親心理健康的生態系統視角，以及ADHD早期診斷的長期教育效益。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">👀</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>非語言同理心與感知的治療師溫暖度及勝任感：一項實驗性影片片段研究</h3>
+      <p class="journal-source">Patient education and counseling &middot; Nonverbal empathy and perceived therapist warmth and competence: An experimental video vignette study.</p>
+      <p>治療師的高非語言同理心（如眼神接觸、點頭、身體前傾）能顯著提升案主感知的溫暖度，且對不安全依附的案主更能提升其對治療師勝任感的評價，顯示非語言溝通在建立治療聯盟中的關鍵角色。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">線上招募的257名一般大眾（模擬案主）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">觀看高非語言同理心治療師影片</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">觀看低非語言同理心治療師影片</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">對治療師溫暖度與勝任感的感知</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">同理心</span><span class="tag">治療聯盟</span><span class="tag">依附</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42229121/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">💊</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>評估興奮劑使用障礙藥物治療試驗中「減少使用」與「戒斷」作為治療結果：12項隨機對照試驗的統合分析</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Evaluating Reduced Use and Abstinence as Outcomes in Pharmacotherapy Trials for Stimulant Use Disorder: A Meta-Analysis of 12 Randomized Controlled Trials.</p>
+      <p>在合併認知行為治療的興奮劑藥物試驗中，以「減少使用」作為主要終點能更靈敏地偵測到治療效果，支持臨床上將減少使用視為與完全戒斷同等重要的實用目標。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">尋求治療的可卡因或甲基安非他命依賴者（共2000名）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">各類藥物治療合併認知行為治療</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑合併認知行為治療</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">藥物減少使用率與完全戒斷率</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">物質使用</span><span class="tag">認知行為治療</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234418/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">👨‍👩‍👧</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>透過發展生態視角重塑心理健康：種族多樣性母親樣本中的童年逆境、歧視與家庭連結</h3>
+      <p class="journal-source">Family process &middot; Reframing Mental Health Through a Developmental-Ecological Lens: Childhood Adversity, Discrimination, and Family Connections in a Racially Diverse Maternal Sample.</p>
+      <p>童年逆境、孤獨感與歧視會顯著預測母親的憂鬱與焦慮，而伴侶支持與家庭力量具有保護作用，顯示臨床介入需同時處理過去創傷與當下社會環境因素。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">334名種族多樣性的幼兒母親</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">童年逆境經驗、孤獨感、歧視、伴侶支持等變項</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無（橫斷面迴歸分析）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">母親憂鬱與焦慮症狀</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">家族治療</span><span class="tag">創傷治療</span><span class="tag">文化能力</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42230148/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#4</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>童年創傷與雙極性障礙關聯之大腦形態學中介因子：國際ENIGMA雙極性障礙工作小組研究</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Brain Morphology Mediators of the Association of Childhood Trauma With Bipolar Disorder: An International ENIGMA Bipolar Disorder Working Group Study.</p>
+      <p>童年創傷嚴重度與雙極性障礙的關聯部分透過大腦灰質形態學差異來中介，為創傷導致情緒疾患提供了神經結構上的實證支持。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">1031名雙極性障礙患者與2221名健康對照組</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">童年創傷問卷評估的嚴重度</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">低/無童年創傷</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">雙極性障礙診斷（經由灰質結構中介）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">創傷治療</span><span class="tag">神經科學</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234441/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#5</span>
+        <span class="emoji-icon">📚</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>首次注意力不足/過動症診斷年齡與教育結果</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Age at First Attention-Deficit/Hyperactivity Disorder Diagnosis and Educational Outcomes.</p>
+      <p>在16歲前被診斷的ADHD個案中，越早確診其國中畢業學業成績越好，支持兒少時期早期鑑定與介入對長期教育成就的正面影響。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">芬蘭1990-1999年出生的58萬名無智能障礙人口</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">較早年齡（4-16歲）接受ADHD診斷</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">較晚年齡接受ADHD診斷</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">國中畢業成績、高中學歷、高等教育註冊率與輟學率</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">兒少心理</span><span class="tag">衡鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/41949840/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🔬</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>恐懼與焦慮的擴展杏仁核-缺乏嚴格功能分離的證據</h3>
+      <p class="journal-source">Social cognitive and affective neuroscience</p>
+      <p>大規模fMRI資料分析顯示，杏仁核中央核與終紋床核在處理確定與不確定威脅時的反應無顯著差異，挑戰了過去將恐懼與焦慮在神經解剖上嚴格分離的理論模型。</p>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">情緒調節</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234867/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">📊</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>腦電圖微狀態-精神病的生物標記？</h3>
+      <p class="journal-source">JAMA psychiatry</p>
+      <p>（無摘要）探討腦電圖微狀態作為潛在精神病生物標記的可能性。</p>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">衡鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234456/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🧭</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>停止計算轉化率-精神病高風險領域需要新的指標</h3>
+      <p class="journal-source">JAMA psychiatry</p>
+      <p>（無摘要）主張精神病臨床高風險（CHR）研究領域應超越單一追蹤「轉化為精神病」的指標，尋求更全面的復原評估標準。</p>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234453/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">💬</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>整合治療能促進復原-回覆</h3>
+      <p class="journal-source">JAMA psychiatry</p>
+      <p>（無摘要）針對主張整合治療能促進復原之文章的作者回覆。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234433/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🔗</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>整合治療能促進復原</h3>
+      <p class="journal-source">JAMA psychiatry</p>
+      <p>（無摘要）探討整合性治療模式對促進精神疾病患者復原的成效與觀點。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42234415/" target="_blank">PubMed →</a>
+      </div>
+    </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">同理心</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">治療聯盟</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">依附</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">物質使用</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">認知行為治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">家族治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">創傷治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">文化能力</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">神經科學</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">情緒調節</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">兒少心理</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">衡鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">非語言溝通</span><span class="keyword">治療聯盟</span><span class="keyword">物質使用減害</span><span class="keyword">發展生態模型</span><span class="keyword">童年創傷</span><span class="keyword">ADHD早期診斷</span><span class="keyword">腦影像中介</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：GLM-5-Turbo</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
