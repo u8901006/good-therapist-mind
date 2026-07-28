@@ -1,8 +1,8 @@
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { resolve, dirname } from "path";
 
-const API_BASE = process.env.ZHIPU_API_BASE || "https://open.bigmodel.cn/api/coding/paas/v4";
-const MODELS = ["GLM-5-Turbo", "GLM-4.7", "GLM-4.7-Flash"];
+const API_BASE = process.env.NVIDIA_API_BASE || "https://integrate.api.nvidia.com/v1";
+const MODELS = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
 
 const SYSTEM_PROMPT = `你是心理治療與諮商研究領域的專業摘要分析師。你的任務是：
 1. 從論文摘要中提煉出最具有臨床實用價值的精華
@@ -134,7 +134,7 @@ function fixBrackets(str) {
   return result;
 }
 
-async function callZhipuAPI(apiKey, prompt, modelIndex = 0) {
+async function callNvidiaAPI(apiKey, prompt, modelIndex = 0) {
   if (modelIndex >= MODELS.length) return null;
 
   const model = MODELS[modelIndex];
@@ -155,9 +155,11 @@ async function callZhipuAPI(apiKey, prompt, modelIndex = 0) {
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: prompt },
           ],
-          temperature: 0.3,
-          top_p: 0.9,
-          max_tokens: 100000,
+          temperature: 1.0,
+          top_p: 0.95,
+          max_tokens: 16384,
+          stream: false,
+          chat_template_kwargs: { enable_thinking: false },
         }),
         signal: AbortSignal.timeout(660000),
       });
@@ -203,7 +205,7 @@ async function callZhipuAPI(apiKey, prompt, modelIndex = 0) {
   }
 
   console.error(`[WARN] Model ${model} failed all attempts, trying fallback...`);
-  return callZhipuAPI(apiKey, prompt, modelIndex + 1);
+        return callNvidiaAPI(apiKey, prompt, modelIndex + 1);
 }
 
 function generateHtml(analysis) {
@@ -373,7 +375,7 @@ function generateHtml(analysis) {
       <div class="header-meta">
         <span class="badge badge-date">📅 ${dateDisplay}（週${wd}）</span>
         <span class="badge badge-count">📊 ${totalCount} 篇文獻</span>
-        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
       </div>
     </div>
   </header>
@@ -422,13 +424,13 @@ async function main() {
   const args = process.argv.slice(2);
   const getInput = () => args.find((a) => a.startsWith("--input="))?.split("=")[1] || "papers.json";
   const getOutput = () => args.find((a) => a.startsWith("--output="))?.split("=")[1];
-  const getApiKey = () => args.find((a) => a.startsWith("--api-key="))?.split("=")[1] || process.env.ZHIPU_API_KEY || "";
+  const getApiKey = () => args.find((a) => a.startsWith("--api-key="))?.split("=")[1] || process.env.NVIDIA_API_KEY || "";
 
   const inputPath = getInput();
   const apiKey = getApiKey();
 
   if (!apiKey) {
-    console.error("[ERROR] No API key. Set ZHIPU_API_KEY env var or use --api-key=");
+    console.error("[ERROR] No API key. Set NVIDIA_API_KEY env var or use --api-key=");
     process.exit(1);
   }
 
@@ -447,7 +449,7 @@ async function main() {
     };
   } else {
     const prompt = buildPrompt(papersData);
-    analysis = await callZhipuAPI(apiKey, prompt);
+    analysis = await callNvidiaAPI(apiKey, prompt);
     if (!analysis) {
       console.error("[ERROR] Analysis failed");
       process.exit(1);
