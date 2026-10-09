@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年10月9日</title>
+<meta name="description" content="2026年10月9日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年10月9日（週五）</span>
+        <span class="badge badge-count">📊 3 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦文化能力、醫病溝通與不確定性管理三大主題，特別是亞裔美國人在心理治療中面對種族議題的經驗與需求，以及視覺化工具在提升臨床溝通與健康結果中的應用，反映出跨文化能力與患者教育工具在當代心理諮商與醫療整合中的重要性。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">🌏</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>亞裔美國人來談者在心理治療中討論種族主題的經驗與需求</h3>
+      <p class="journal-source">Journal of counseling psychology &middot; Asian American client perspectives on racism-related discussions in psychotherapy.</p>
+      <p>亞裔美國人來談者多在治療關係足夠安全時討論種族議題，治療師的肯定與認同可增強治療聯盟並促進情緒處理，但缺乏文化探索與實務策略則降低其願意自洩，凸顯文化能力訓練的必要性。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">11位曾在心理治療中討論過至少一次種族相關事件的亞裔美國成年人</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">治療師在種族相關討論中的回應策略（如認同、肯定、認知重構、提供建議）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無明確對照組（質性研究）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">治療師的肯定與認同增強治療聯盟、促進情緒處理並導致行為或認知改變；輕視或淡化反應則破壞信任並減少未來自洩意願</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">文化能力</span><span class="tag">治療聯盟</span><span class="tag">同理心</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42848048/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">📊</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>雙語圖像資訊圖提升拉丁裔HIV患者的臨床溝通與健康結果</h3>
+      <p class="journal-source">Patient education and counseling &middot; Bilingual infographics improve clinical communication and health outcomes among Latino persons with HIV: A multi-site mixed methods study with a randomized controlled trial.</p>
+      <p>雙語（英文/西班牙文）圖像資訊圖顯著提升HIV相關知識與藥物依從性，雖未顯著改變病毒載量，但獲患者高度接受與使用，證明視覺化工具在跨語言臨床溝通中的實用價值。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">164位來自美國科羅拉多與多明尼加共和國的拉丁裔HIV患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">由受訓臨床師使用行動應用程式中的雙語圖像資訊圖進行健康資訊傳遞</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規訪視期間接受標準衛教的對照組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">介入組在HIV相關知識與藥物依從性顯著優於對照組（p<.001, p=.009），其他結果（除自我報告心理健康狀況外）兩組皆有內在改善但無間組差異</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">醫病溝通</span><span class="tag">文化能力</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42735516/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">🔬</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>林奇症候群基因篩選中不確定性管理與臨床參與的關聯</h3>
+      <p class="journal-source">Patient education and counseling &middot; Uncertainty and information management for Lynch syndrome in a genomic screening cohort: Connections to clinical engagement.</p>
+      <p>正確資訊與來自可信任來源的支援是管理遺傳性癌症風險不確定性的關鍵，錯誤資訊或缺乏臨床師支援會降低參與度，凸顯初級照護提供者需具備正確知識與工具以促進臨床參與。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">17位經人口基因篩選發現林奇症候群基因變異的參與者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">參與者如何評估、重新評估與管理LS相關癌症風險的不確定性</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">高臨床參與 vs 低臨床參與者的經驗對比</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">將LS風險視為威脅者多具有高臨床參與度；低參與者多因受到錯誤資訊、缺乏臨床師支援或對LS有誤解而未參與臨床管理</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">醫病溝通</span><span class="tag">衡鑑與評估</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42727165/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">文化能力</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">醫病溝通</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">治療聯盟</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">同理心</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">衡鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">文化能力</span><span class="keyword">醫病溝通</span><span class="keyword">證據實務</span><span class="keyword">治療聯盟</span><span class="keyword">不確定性管理</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
