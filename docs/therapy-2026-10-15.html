@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年10月15日</title>
+<meta name="description" content="2026年10月15日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年10月15日（週四）</span>
+        <span class="badge badge-count">📊 6 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦於行為健康政策影響（線上體育博彩合法化）、認知行為療法機制探討（認知失比例）、以及跨診斷生物標記研究（線粒體心理生物學、淋巴管系統功能），顯示心理治療研究正從臨床介入擴展至社會決策與神經生物學整合。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">📊</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>線上體育博彩合法化與行為健康照護使用之關聯：準實驗研究</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Online Sports Betting Legalization and Behavioral Health Care Use.</p>
+      <p>線上體育博彩合法化顯著增加抗憂鬱與抗焦慮藥物使用，尤其在女性中效應較大，但未見藥物質使用障礙藥物使用變化，凸顯博彩政策對心理健康服務需求的間接影響。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">18-64歲，具雇主贊助健康保險之男女，居於2018-2022年合法化線上體育博彩之州或未合法化州</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">州層級線上體育博彩合法化</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">未合法化線上體育博彩之州（對照組）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">增加抗憂鬱藥物使用（男性+0.57pp，女性+1.08pp）及抗焦慮藥物使用（男性+0.32pp，女性+0.64pp），但無顯著改變藥物質使用障礙藥物使用</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">物質使用</span><span class="tag">證據實務</span><span class="tag">醫病溝通</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42873510/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>認知失比例在認知行為治療中對認知變化程序效果的調節作用</h3>
+      <p class="journal-source">Journal of clinical psychology &middot; Disproportionality of Depressive Reactions and the Process of Change in Cognitive Behavioral Therapy for Depression.</p>
+      <p>個體對壓力的反應是否失比例（過度擔憂）將調節認知行為治療中認知改變程序的效果，失比例反應越強者，認知改變介入效果越佳，支持將失比例視為治療反應的潛在預測因子。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">126名參與認知行為治療治療抑鬱症之客戶（研究二）；616名大學生（研究一）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">認知行為治療中的認知改變程序</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">未特別區分，焦點在失比例作為調節變項</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">失比例顯著調節認知改變程序與認知改變之間的關係：失比例越高，認知改變程序對認知改變的正向效應越強</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">認知行為治療</span><span class="tag">心智化</span><span class="tag">評鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42872586/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">🔋</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>線粒體心理生物學：整合身心與能量調節的新興領域</h3>
+      <p class="journal-source">Neuroscience and biobehavioral reviews &middot; Mitochondrial Psychobiology.</p>
+      <p>提出線粒體作為身心互動的核心機制，調節能量代謝、基因表達與壓力適應，並連結至認知、情緒與行為，為跨學科理解心身健康提供整合性框架。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">橫跨心理學、神經科學、細胞生物學與精神病理學的跨學科研究</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無直接介入，理論框架提出</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">傳統分離身心研究模式</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">建議線粒體功能可作為心身疾病（如抑鬱、焦慮、創傷後壓力症候群）的共同生物學基礎，並指向新興干預途徑（如代謝調整、運動、壓力管理）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">情緒調節</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42869317/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#4</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>跨診斷淋巴管系統功能降低：精神疾病中血管周圍擴散的系統性評估與 meta 分析</h3>
+      <p class="journal-source">Neuroscience and biobehavioral reviews &middot; Transdiagnostic Reductions in Glymphatic-Related Perivascular Diffusion Across Psychiatric Disorders: A Systematic Review and Meta-analysis.</p>
+      <p>跨多種精神疾病（情緒、思覺失調、自閉譜系、ADHD 等）發現血管周圍擴散指標（DTI-ALPS）顯著降低，提示淋巴管系統功能障礙可能為精神疾病共同的神經生物學機制。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">精神疾病患者（情緒障礙、自閉譜系、ADHD、精神病、睡眠障礙、物質使用等） vs 健康對照組</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無介入，觀察性研究</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">健康對照組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">精神疾病群體在雙側DTI-ALPS指標上顯著降低（Hedges' g = -0.78，95%CI -1.01 to -0.55），異質性高（I²=86.3%）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">評鑑與評估</span><span class="tag">創傷治療</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42869316/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#5</span>
+        <span class="emoji-icon">📈</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>跨診斷認知行為治療在初級照護中的長期效效：PsicAP-CV 試驗</h3>
+      <p class="journal-source">Psychotherapy and psychosomatics &middot; Long-term effectiveness of transdiagnostic cognitive-behavioural therapy for anxiety and depression in primary care: the PsicAP-CV trial.</p>
+      <p>團體跨診斷認知行為治療對焦慮與抑鬱症狀顯著改善，效應大且穩持9個月；但延遲治療組輟學率顯著更高（64.2% vs 44.0%），提醒即時可及性對維持治療參與的關鍵性。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">316名初級照護患者，輕至中度焦慮與抑鬱，73.4%女性，平均年齡44歲</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">團體跨診斷認知行為治療（TD-CBT）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">延遲介入組（三個月等待名單）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">症狀顯著減少（d > 1.2），9個月穩持；生活品質與功能改善異質（工作與家庭域持續提升）；延遲組輟學率顯著增加</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">認知行為治療</span><span class="tag">脫落與留存</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42868096/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🤖</span>
+        <span class="utility-mid utility-sm">中</span>
+      </div>
+      <h3>需要澄清心理健康人工智慧的規範</h3>
+      <p class="journal-source">JAMA psychiatry</p>
+      <p>強調當前心理健康AI應用缺乏明確監管架構，呼籲制定標準以確保臨床安全、效益與倫理適用。</p>
+      <div class="card-footer">
+        <span class="tag">證據實務</span><span class="tag">醫病溝通</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42873530/" target="_blank">PubMed →</a>
+      </div>
+    </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">認知行為治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">4</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">神經科學</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">醫病溝通</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">評鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">物質使用</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:25%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">脫落與留存</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:25%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">情緒調節</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+        <span class="topic-count">2</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">線上體育博彩</span><span class="keyword">認知失比例</span><span class="keyword">認知行為治療</span><span class="keyword">線粒體心理生物學</span><span class="keyword">淋巴管系統</span><span class="keyword">跨診斷治療</span><span class="keyword">初級照護</span><span class="keyword">治療留存</span><span class="keyword">心理健康政策</span><span class="keyword">神經科學</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
