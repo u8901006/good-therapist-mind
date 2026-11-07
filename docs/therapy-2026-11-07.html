@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年11月7日</title>
+<meta name="description" content="2026年11月7日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月7日（週六）</span>
+        <span class="badge badge-count">📊 7 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻以認知行為治療精神病質性經驗之質性整合、虛擬實境化身療法針對難治性憂鬱、以及移動單元整合藥癮與愛滋預防服務之大型隨機對照試驗為亮點，涵蓋心理治療歷程、創新科技應用與公共衛生實務三大面向。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>認知行為治療精神病質（CBTp）服務使用者經驗的系統性回顧與質性綜合更新</h3>
+      <p class="journal-source">Clinical psychology & psychotherapy &middot; An Updated Systematic Review and Meta-Synthesis of Service User's Experiences of Cognitive Behavioural Therapy for Psychosis (CBTp).</p>
+      <p>最大規模質性綜合顯示 CBTp 治療獲益的關鍵在於建立安全感、協作授權與共同理解，而非單純技術挑戰，數位化發展不應犧牲治療關係。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">接受 CBTp 的精神病質個案（24 研究，334 位參與者）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">認知行為治療精神病質 (CBTp)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組（質性綜合）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">三大核心主題：協作授權、安全感建立、共同理解促進接納與挑戰痛苦經驗</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">認知行為治療</span><span class="tag">心理治療歷程</span><span class="tag">治療聯盟</span><span class="tag">創傷治療</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42989610/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">🥽</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>虛擬實境化身療法治療難治性重性憂鬱症的治療歷程：患者經驗質性分析</h3>
+      <p class="journal-source">Clinical psychology & psychotherapy &middot; Therapeutic Processes in Virtual Reality-Based Avatar Therapy for Treatment-Resistant Major Depressive Disorder: A Qualitative Analysis of Patients' Experiences.</p>
+      <p>VRT 結合沉浸式角色扮演、外在化內在歷程與對抗性主題，幫助難治性憂鬱患者將治療概念整合至日常生活並增強自我決定。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">完成 8-12 節 VRT 的難治性重性憂鬱症成人（N=12，曾接受≥2 種傳統心理治療）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">虛擬實境化身療法 (VRT)</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">患者過往傳統心理治療經驗（組內比較）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">六大治療歷程主題與三大獲益：整合治療概念、提升心智化能力、增強自我決定；對抗為貫穿主題</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">創新療法</span><span class="tag">心理治療歷程</span><span class="tag">情緒調節</span><span class="tag">心智化</span><span class="tag">認知行為治療</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42987807/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">🚌</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>針對注射毒品者的整合性愛滋暴露前預防與阿片類藥物使用障礙藥物療法移動單元服務：HPTN 094 隨機對照試驗</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Mobile Units for Integrated Addiction and HIV Prevention Services for People Who Inject Drugs: The HPTN 094 Randomized Clinical Trial.</p>
+      <p>移動單元提供整合 PrEP 與 MOUD 雖可行，但 26 週與 52 週主要結果（PrEP 使用率、MOUD 使用率）皆未達統計顯著優於社區轉介組。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">注射毒品者、無 HIV、有阿片類藥物使用障礙且未接受 MOUD 但願意嘗試（N=409，五城市）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">移動單元整合 PrEP、MOUD、同儕導航與有限臨床服務（26 週）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">同儕導航轉介至既有社區服務（主動對照）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">26 週 PrEP 使用率 5.4% vs 2.9%、MOUD 使用率 14.8% vs 10.7%，雙雙未達顯著差異；52 週持平</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">物質使用</span><span class="tag">公共衛生</span><span class="tag">證據實務</span><span class="tag">醫病溝通</span><span class="tag">脱落與留存</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42981102/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#4</span>
+        <span class="emoji-icon">🍷</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>酒精使用障礙：機制發現與新藥物療法設計的進展</h3>
+      <p class="journal-source">Neuroscience and biobehavioral reviews &middot; Alcohol Use disorder - progress in mechanism discovery and new pharmacotherapy design.</p>
+      <p>綜述肌動蛋白骨架、孤兒痛肽/孤兒腦啡肽系統、內源性大麻素系統等新藥物標靶，並提出結合生態瞬間評估 (EMA) 的個體化、階段敏感給藥策略。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">酒精使用障礙 (AUD) 患者</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">新世代神經藥物療法（針對肌動蛋白、孤兒痛肽、內源性大麻素系統）結合 EMA 技術</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">現有藥物療法（納曲酮、阿坎酸等）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">機制層面突破與個體化給藥框架；臨床療效有待後續試驗驗證</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">物質使用</span><span class="tag">神經科學</span><span class="tag">藥物療法</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42988345/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#5</span>
+        <span class="emoji-icon">🔍</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>疾病覺察與否認的跨診斷模型：疾病洞察建構的核心成分</h3>
+      <p class="journal-source">Neuroscience and biobehavioral reviews &middot; A transdiagnostic model of illness awareness and denial: Core components of the broader construct of insight into illness.</p>
+      <p>提出基於預測處理、自我表徵網絡與突顯-威脅系統的神經生物學框架，解釋疾病覺察波動與否認機制，並給出可檢證的治療靶點假設。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">跨診斷（精神科與醫學疾病）疾病覺察受損個體</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">理論模型建構（預測誤差更新、威脅偏向精度加權、半球側化）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">現有碎片化、診斷特異性的洞察理論</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">可檢證的神經生物學假設：半球參與、威脅相關精度加權、自我信念更新靈活度</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span><span class="tag">神經科學</span><span class="tag">認知行為治療</span><span class="tag">跨診斷</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42988344/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#6</span>
+        <span class="emoji-icon">🧬</span>
+        <span class="utility-low">低實用性</span>
+      </div>
+      <h3>精神分裂症中楔前核轉錄組改變</h3>
+      <p class="journal-source">JAMA psychiatry &middot; Claustrum Transcriptome Alterations in Schizophrenia.</p>
+      <p>尸檢轉錄組分析發現楔前核 (dCLA) 1717 個差異表達基因，上調基因涉及免疫/轉錄調節，下調基因涉及粒線體/氧化磷酸化，與皮質區域改變高度重疊。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">精神分裂症死後腦組織 (SZ n=47 vs UC n=49)</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（觀察性基因表達比較）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">未受影響對照組；並跨腦區比較 (dCLA, ACC, dlPFC, 被殼, 尾狀核)</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">dCLA 大量基因差異表達，功能註解指向免疫激活與粒線體功能障礙，與皮質改變模式高度一致 (RRHO 分析)</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">精神分裂症</span><span class="tag">基因表達</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42981062/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#7</span>
+        <span class="emoji-icon">📋</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>家族癌症負擔下的患者賦權：家族癌症賦權量表 (FCES) 發展與心理測驗評估</h3>
+      <p class="journal-source">Patient education and counseling &middot; Patient empowerment in the context of familial cancer burden: Development and psychometric evaluation of the Familial Cancer Empowerment Scale (FCES).</p>
+      <p>基於 GCOS-24 發展出 10 題德語版 FCES，三因子結構、內部一致性良好 (ω=0.82)，為首個專門評估家族癌症風險族群賦權的簡短量表。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">家族癌症風險族群（認知訪談 n=7，橫斷驗證 n=194）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">FCES 量表發展流程（TRAPD 方法、專家盤、認知訪談、探索性因子分析）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">GCOS-24 原量表</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">10 題三因子量表，信效度初步支持，因子 1 兩題相關中等 (ρ=0.53)，需獨立驗證</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">醫病溝通</span><span class="tag">衡鑑與評估</span><span class="tag">量表發展</span><span class="tag">賦權</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42987779/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">認知行為治療</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">心理治療歷程</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">物質使用</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">治療聯盟</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">神經科學</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">衡鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">創新療法</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">公共衛生</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">醫病溝通</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">脫落與留存</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+        <span class="topic-count">2</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">跨診斷</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">心智化</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">情緒調節</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+        <span class="topic-count">1</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">CBTp</span><span class="keyword">虛擬實境療法</span><span class="keyword">難治性憂鬱</span><span class="keyword">移動單元</span><span class="keyword">藥癮整合照護</span><span class="keyword">酒精使用障礙</span><span class="keyword">疾病洞察</span><span class="keyword">精神分裂症轉錄組</span><span class="keyword">家族癌症賦權</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-ultra-550b-a55b</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
