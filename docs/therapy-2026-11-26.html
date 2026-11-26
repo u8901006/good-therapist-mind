@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good Therapist Mind &middot; 心理治療文獻日報 &middot; 2026年11月26日</title>
+<meta name="description" content="2026年11月26日 心理治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .footer-links { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.3s both; }
+  .footer-link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .footer-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .footer-link-icon { font-size: 28px; flex-shrink: 0; }
+  .footer-link-text { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .footer-link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🤝</div>
+    <div class="header-text">
+      <h1>Good Therapist Mind &middot; 心理治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月26日（週四）</span>
+        <span class="badge badge-count">📊 9 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦於精神醫學生物標記的方法論挑戰、首發精神病治療阻抗預測模型、以及AI聊天機器人在腫瘤照護中的應用效益，兼顧神經科學基礎研究與臨床決策支援工具的發展趨勢。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#1</span>
+        <span class="emoji-icon">🎯</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>利用常規臨床數據預測首發精神病的治療阻抗</h3>
+      <p class="journal-source">JAMA Psychiatry &middot; Predicting Treatment Resistance in First-Episode Psychosis Using Routinely Collected Clinical Data</p>
+      <p>基於大型電子健康紀錄資料庫開發預測模型，可在首發精神病初期識別未來將需接受氯氮平治療的患者，有望縮短治療阻抗確診的漫長等待期。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">25,665名首發精神病患者（平均年齡25.5歲，女性46.8%）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">基於首次就診時179項預測變項（症狀、社會人口學、併存症、用藥）建立的懲罰式邏輯迴歸模型</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">留一機構外部驗證（leave-one-trust-out cross-validation）</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">8年內啟動氯氮平治療（治療阻抗代理指標），模型顯示可接受的鑑別度（mean AUC約0.72-0.75）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span><span class="tag">證據實務</span><span class="tag">神經科學</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43084308/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#2</span>
+        <span class="emoji-icon">🤖</span>
+        <span class="utility-high">高實用性</span>
+      </div>
+      <h3>以患者為中心的AI聊天機器人在腫瘤照護中的教育、支持與症狀自我管理：系統性回顧</h3>
+      <p class="journal-source">Patient Education and Counseling &middot; Patient-centered AI chatbots for education, support, and symptom self-management in oncology: A systematic review</p>
+      <p>AI聊天機器人有效降低癌症患者焦慮憂鬱、提升知識與賦權，但療效受年齡與數位素養影響，且存在醫療準確性與幻覺風險，需納入人性化框架確保安全。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">接受癌症治療的患者（13項研究，樣本量與癌別各異）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">基於人工智慧（含大型語言模型）的聊天機器人介入，提供教育、心理支持、症狀自我管理</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規照護、靜態資訊手冊、或等候名單控制組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">焦慮/憂鬱症狀減緩、患者知識提升、賦權感增強；患者啟動度改善不一；年輕/高數位素養者獲益較大</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">醫病溝通</span><span class="tag">證據實務</span><span class="tag">情緒調節</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43077918/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#3</span>
+        <span class="emoji-icon">🧬</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>重新思考精神科生物標記研究中的共變項調整</h3>
+      <p class="journal-source">JAMA Psychiatry &middot; Rethinking Covariate Adjustment in Psychiatric Biomarker Research</p>
+      <p>分析50萬 UK Biobank 樣本發現，技術、人口統計、行為與時間等共變項對血液生物標記影響巨大，若不當調整將導致精神疾病關聯性結果失真，亟需標準化分析框架。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">約50萬 UK Biobank 參與者（40-69歲，含生化、血球計數、代謝組學、蛋白質組學資料）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">循序漸進的共變項調整策略（技術因素→人口結構→人口統計→行為→時間因素）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">未調整模型 vs. 不同層級調整模型</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">29項血液生物標記的變異數解釋量；共變項與精神疾病的關聯；調整後生物標記-疾病關聯的衰減程度</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">衡鑑與評估</span><span class="tag">神經科學</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43084319/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#4</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>情感障礙中努力調節與動機的轉譯洞察</h3>
+      <p class="journal-source">Neuroscience and Biobehavioral Reviews &middot; Translational Insights into Effort Regulation and Motivation in Affective Disorders</p>
+      <p>整合動物模型與人類研究，闡述神經調節系統在關鍵腦區迴路中如何調控適應性努力行為，區分「願意付出努力」與「快感缺失」的不同機制，指向新藥物開發標的。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">情感障礙患者（憂鬱症等）與動物模型（應激暴露）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">神經生物學機制綜述（多巴胺、去甲腎上腺素、5-HT、乙醯膽鹼等在腹側紋狀體、前額葉皮質等迴路的交互作用）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">正常努力決策機制 vs. 病理狀態下的成本/效益分析受損</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">識別出調控努力意願的特定神經迴路與分子標的；周邊機制（如發炎、代謝）在人類動機缺失中的潛在角色</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">情緒調節</span><span class="tag">動機式訪談</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43078227/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#5</span>
+        <span class="emoji-icon">🧠</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>顱內癲癇手術預後的靜息態fMRI生物標記：系統性回顧</h3>
+      <p class="journal-source">Neuroscience and Biobehavioral Reviews &middot; Resting-state fMRI biomarkers of surgical outcome in temporal lobe epilepsy: Network reorganization, rsfMRI-based prediction models, and cognition</p>
+      <p>系統回顧15項研究顯示，術前rsfMRI網路連結模式可預測顳葉癲癇手術癲癇發作預後，術後功能連結向健康對照常態重組，但現有證據異質性高、缺乏外部驗證，尚不足供臨床應用。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">474名接受切除性手術的顳葉癲癇患者（術後追蹤≥1年）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">術前靜息態fMRI為基礎的預測模型（預設模式網路DMN、視丘網路等功能連結指標）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">健康對照組；術後無發作 vs. 有發作患者</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">術前rsfMRI模型預測癲癇自由預後準確度具潛力；術後無發作者功能連結向健康模式重組；視丘-網狀激活系統連結與視空間注意力相關</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">衡鑑與評估</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42901389/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#6</span>
+        <span class="emoji-icon">👨‍👩‍👧‍👦</span>
+        <span class="utility-mid">中實用性</span>
+      </div>
+      <h3>自然互動中親子人腦神經同步性與行為關聯：系統性回顧</h3>
+      <p class="journal-source">Neuroscience and Biobehavioral Reviews &middot; Interpersonal neural synchrony and parent-child behaviors during naturalistic interactions: A systematic review</p>
+      <p>高人腦神經同步性（INS）最一致關聯於親子雙向投入、共享正向情感與支持性教養；互惠性、回應性等關聯具情境依賴性，任務結構與社會線索調節INS-行為關聯。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">學齡前至早期青春期兒童及其父母（15項超掃描實證研究）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">自然互動任務中的雙人腦同步測量（fNIRS、EEG等）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不同互動階段、任務類型、親子雙方神經活動的時間先後關係</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">INS與互惠投入、正向情感、支持性教養正相關；INS隨特定行為事件波動；父母壓力、兒童社會功能為調節變項</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">依附</span><span class="tag">神經科學</span><span class="tag">兒少心理</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/42901388/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div>
+    <div class="news-card featured">
+      <div class="card-header">
+        <span class="rank-badge">#7</span>
+        <span class="emoji-icon">🔬</span>
+        <span class="utility-low">低實用性</span>
+      </div>
+      <h3>突觸囊泡糖蛋白2A與精神疾病中的興奮-抑制平衡：系統性回顧與荟萃分析</h3>
+      <p class="journal-source">JAMA Psychiatry &middot; Synaptic Vesicle Glycoprotein 2A and Excitatory-Inhibitory Balance in Psychiatric Disorders: A Systematic Review and Meta-Analysis</p>
+      <p>整合30項動物電灼模型研究，發現SV2A表達下降與興奮性傳遞增加相關，藥理學上調SV2A可抑制幂化發展，支持SV2A PET影像發現反映興奮-抑制失衡而非單純突觸密度減少。</p>
+      <div class="pico-grid">
+      <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">動物電灼模型（幂化模型，模擬腦過度興奮/癲癇/精神疾病興奮-抑制失衡）</span></div>
+      <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">SV2A基因/藥理調節（左乙拉西坦等SV2A配體）</span></div>
+      <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">野生型/載體對照組；未治療幂化組</span></div>
+      <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">SV2A表達隨幂化下降；SV2A上調顯著降低發作嚴重度與達到幂化標準的機率（meta-analysis顯示顯著保護效應）</span></div>
+    </div>
+      <div class="card-footer">
+        <span class="tag">神經科學</span><span class="tag">證據實務</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43084313/" target="_blank">閱讀原文 →</a>
+      </div>
+    </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">💊</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>照顧者對孩子報告青黴素過敏經驗的歷程圖譜繪製</h3>
+      <p class="journal-source">Patient Education and Counseling</p>
+      <p>歷程圖譜揭示醫師溝通缺口：多數照顧者未獲告知副作用、過敏診斷含糊、罕見獲得過敏測試轉介，導致青黴素過敏過度診斷與評估不足。</p>
+      <div class="card-footer">
+        <span class="tag">醫病溝通</span><span class="tag">衡鑑與評估</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43085191/" target="_blank">PubMed →</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="card-header-row">
+        <span class="emoji-sm">🩺</span>
+        <span class="utility-low utility-sm">低</span>
+      </div>
+      <h3>文化調適的乳癌篩檢資源：南亞裔女性與醫療提供者觀點</h3>
+      <p class="journal-source">Patient Education and Counseling</p>
+      <p>南亞裔女性偏好簡潔、視覺化、多語言（英文/烏爾都語/印地語）資源，解決疼痛、隱私、女性醫師等疑慮；建議透過社區組織、宗教場所、族群媒體傳播。</p>
+      <div class="card-footer">
+        <span class="tag">文化能力</span><span class="tag">醫病溝通</span>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/43085186/" target="_blank">PubMed →</a>
+      </div>
+    </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+      <div class="topic-row">
+        <span class="topic-name">神經科學</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+        <span class="topic-count">5</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">衡鑑與評估</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:80%"></div></div>
+        <span class="topic-count">4</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">證據實務</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:80%"></div></div>
+        <span class="topic-count">4</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">醫病溝通</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+        <span class="topic-count">3</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">情緒調節</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">動機式訪談</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">依附</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">兒少心理</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div>
+        <span class="topic-count">1</span>
+      </div>
+      <div class="topic-row">
+        <span class="topic-name">文化能力</span>
+        <div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div>
+        <span class="topic-count">1</span>
+      </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">治療阻抗預測</span><span class="keyword">AI聊天機器人</span><span class="keyword">生物標記方法學</span><span class="keyword">努力調節</span><span class="keyword">癲癇手術預後</span><span class="keyword">人腦神經同步性</span><span class="keyword">SV2A</span><span class="keyword">青黴素過敏</span><span class="keyword">文化調適衛教</span></div></div>
+
+  <div class="footer-links">
+    <a href="https://www.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">🏥</span>
+      <span class="footer-link-text">李政洋身心診所首頁</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">📧</span>
+      <span class="footer-link-text">訂閱電子報</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="footer-link-card" target="_blank">
+      <span class="footer-link-icon">☕</span>
+      <span class="footer-link-text">Buy Me a Coffee</span>
+      <span class="footer-link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-ultra-550b-a55b</span>
+    <span><a href="https://github.com/u8901006/good-therapist-mind">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
